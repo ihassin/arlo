@@ -1,6 +1,6 @@
 # Arlo
 
-[![Gem Version](https://badge.fury.io/rb/arlo.svg)](https://badge.fury.io/rb/arlo)
+[![Gem Version](https://badge.fury.io/rb/arlo.svg)](https://badge.fury.io/rb/arlo) [![Build Status](https://travis-ci.org/ihassin/arlo.svg?branch=master)](https://travis-ci.org/ihassin/arlo)
 
 Get information about your Arlo account as well as your devices.
 
