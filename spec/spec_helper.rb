@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'arlo'
+require File.expand_path './support/vcr_setup.rb', __dir__
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -12,3 +13,4 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
