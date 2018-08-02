@@ -1,5 +1,6 @@
-require "arlo/version"
-
 module Arlo
-  # Your code goes here...
+  require 'arlo/version'
+  require 'arlo/token'
+  require 'arlo/profile'
+  require 'arlo/devices'
 end

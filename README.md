@@ -1,12 +1,6 @@
 # Arlo
 
-
-http://www.robertogallea.com/blog/netgear-arlo-api
-https://github.com/bburtin/arlo-api
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/arlo`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Get information about your Arlo account as well as your devices.
 
 ## Installation
 
@@ -24,9 +18,25 @@ Or install it yourself as:
 
     $ gem install arlo
 
+## Testing
+
+    ARLO_EMAIL=xxx ARLO_PASSWORD=yyy bundle exec rspec
+
 ## Usage
 
-TODO: Write usage instructions here
+Please see the tests for client usage.
+
+### get_token
+
+Call this to gain access to the other APIs.
+
+### get_profile
+
+Call this to get your profile information.
+
+### get_devices token
+
+Call this to get device information.
 
 ## Development
 
@@ -44,12 +54,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Arlo project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/arlo/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Arlo project’s codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/arlo/blob/master/CODE_OF_CONDUCT.md).
 
-# Raw
+# Thanks
 
-```
-curl -H "Content-Type: application/json;charset=UTF-8" -d '{"email":"email","password":"pass"}' -X POST "https://arlo.netgear.com/hmsweb/login/v2"
-```
-
-
+Thank you to [Roberto Gallea](http://www.robertogallea.com/blog/netgear-arlo-api) and [bburtin](https://github.com/bburtin/arlo-api) for their inspiring blog posts and repos.
