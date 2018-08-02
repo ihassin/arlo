@@ -1,8 +1,10 @@
 # Arlo
 
+[![Gem Version](https://badge.fury.io/rb/arlo.svg)](https://badge.fury.io/rb/arlo)
+
 Get information about your Arlo account as well as your devices.
 
-## Installation
+# Installation
 
 Add this line to your application's Gemfile:
 
@@ -18,41 +20,52 @@ Or install it yourself as:
 
     $ gem install arlo
 
-## Testing
+# Testing
 
     ARLO_EMAIL=xxx ARLO_PASSWORD=yyy bundle exec rspec
 
-## Usage
+# Usage
 
 Please see the tests for client usage.
 
-### get_token
+Set up the environment variables reflecting your Arlo credentials:
+
+    export ARLO_EMAIL=xxx
+    export ARLO_PASSWORD=yyy
+
+## get_token
 
 Call this to gain access to the other APIs.
 
-### get_profile
+## get_profile
 
 Call this to get your profile information.
 
-### get_devices token
+## get_devices
 
 Call this to get device information.
 
-## Development
+# TODO
+
+* Provide a convenient interface to manage devices
+* Control cameras (start/stop recordings)
+* Download videos
+
+# Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
+# Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/arlo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ihassin/arlo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-## License
+# License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
+# Code of Conduct
 
 Everyone interacting in the Arlo project’s codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/arlo/blob/master/CODE_OF_CONDUCT.md).
 
