@@ -1,10 +1,6 @@
-require 'net/http'
-require 'uri'
-require 'json'
-require 'openssl'
-
 module Arlo
   class API
+
     def initialize
       @@token = nil
     end
@@ -24,17 +20,5 @@ module Arlo
       @@token = JSON.parse(response.body)['data']['token']
     end
 
-    private
-    def post url, payload
-      uri = URI.parse(url)
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-
-      request = Net::HTTP::Post.new(uri)
-      request.add_field('Content-Type', 'application/json')
-      request.body = payload.to_json
-
-      http.request(request)
-    end
   end
 end
