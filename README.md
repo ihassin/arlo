@@ -72,3 +72,7 @@ Everyone interacting in the Arlo project’s codebase, issue trackers, chat room
 # Thanks
 
 Thank you to [Roberto Gallea](http://www.robertogallea.com/blog/netgear-arlo-api) and [bburtin](https://github.com/bburtin/arlo-api) for their inspiring blog posts and repos.
+
+# Other work
+
+Whats seems like a very comprehensive Python library by [jeffreydwalter](https://github.com/jeffreydwalter/arlo)
