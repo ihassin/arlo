@@ -26,14 +26,14 @@ RSpec.describe 'Arlo Gem' do
       end
     end
 
-    it 'retrieves the devices' do
-      VCR.use_cassette 'devices' do
-        devices = @api.get_devices @token
-        expect(devices['data']).not_to be nil
-      end
-    end
-
     context 'device operations' do
+      it 'retrieves the devices' do
+        VCR.use_cassette 'devices' do
+          devices = @api.get_devices @token
+          expect(devices['data']).not_to be nil
+        end
+      end
+
       it 'gets a device by name' do
         device_name = ENV['ARLO_TEST_DEVICE']
         raise 'Missing ARLO_TEST_DEVICE environment variable' unless device_name
@@ -43,6 +43,16 @@ RSpec.describe 'Arlo Gem' do
           expect(device['deviceName']).to eq device_name
         end
       end
+    end
+
+    context 'library operations' do
+      it 'retrieves library index' do
+        VCR.use_cassette 'library' do
+          library = @api.get_library @token, '20180802', '20180803'
+          expect(library['success']).to eq true
+        end
+      end
+
     end
   end
 
