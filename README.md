@@ -22,7 +22,9 @@ Or install it yourself as:
 
 # Testing
 
-    ARLO_EMAIL=xxx ARLO_PASSWORD=yyy bundle exec rspec
+    ARLO_TEST_DEVICE=ddd ARLO_EMAIL=xxx ARLO_PASSWORD=yyy bundle exec rspec
+
+ARLO_TEST_DEVICE being the name of the device you want to test with
 
 # Usage
 
@@ -42,6 +44,10 @@ Call this to gain access to the other APIs.
 Call this to get your profile information.
 
 ## get_devices
+
+Call this to get the list of devices (including basestations) registered with the account.
+
+## get_device_info
 
 Call this to get device information.
 
