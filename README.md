@@ -51,6 +51,10 @@ Call this to get the list of devices (including basestations) registered with th
 
 Call this to get device information.
 
+## get_library
+
+Call this to get the library's index of all the recordings it has between the two supplied dates.
+
 # TODO
 
 * Provide a convenient interface to manage devices

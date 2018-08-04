@@ -5,4 +5,5 @@ module Arlo
   require 'arlo/token'
   require 'arlo/profile'
   require 'arlo/devices'
+  require 'arlo/library'
 end
