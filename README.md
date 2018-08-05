@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/arlo.svg)](https://badge.fury.io/rb/arlo) [![Build Status](https://travis-ci.org/ihassin/arlo.svg?branch=master)](https://travis-ci.org/ihassin/arlo)
 
-Get information about your Arlo account as well as your devices.
+Get and set information about your Arlo account as well as your devices.
 
 # Installation
 
@@ -35,30 +35,68 @@ Set up the environment variables reflecting your Arlo credentials:
     export ARLO_EMAIL=xxx
     export ARLO_PASSWORD=yyy
 
-## get_token
-
-Call this to gain access to the other APIs.
-
 ## get_profile
 
 Call this to get your profile information.
+
+```
+api = Arlo::API.new
+profile = api.get_profile
+firstName = api.profile['data']['firstName']
+```
+
+Note: This method is implicitly called when instantiating the API object, so you can directly see the profile by:
+```
+api = Arlo::API.new
+firstName = api.profile['data']['firstName']
+```
 
 ## get_devices
 
 Call this to get the list of devices (including basestations) registered with the account.
 
+```
+api = Arlo::API.new
+devices = api.get_devices
+first_device = api.devices['data'][0]
+```
+
+Note: This method is implicitly called when instantiating the API object, so you can directly see the devices by:
+```
+api = Arlo::API.new
+first_device = api.devices['data'][0]
+```
+
 ## get_device_info
 
 Call this to get device information.
+
+```
+api = Arlo::API.new
+camera1 = api.get_device_info 'Camera1"
+```
+
+## arm_device
+
+Call this to arm or disarm a device
+
+```
+api = Arlo::API.new
+camera1 = api.arm_device 'Camera1", true|false
+```
 
 ## get_library
 
 Call this to get the library's index of all the recordings it has between the two supplied dates.
 
+```
+api = Arlo::API.new
+library = api.get_library '20180802', '20180803'
+```
+
 # TODO
 
-* Provide a convenient interface to manage devices
-* Control cameras (start/stop recordings)
+* Control cameras (start/stop recordings, take snapshots)
 * Download videos
 
 # Development
