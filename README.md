@@ -94,9 +94,19 @@ api = Arlo::API.new
 library = api.get_library '20180802', '20180803'
 ```
 
+## take_snapshot
+
+Call this to take a snapshot using a given camera.
+
+```
+api = Arlo::API.new
+camera = @api.get_device_info(camera_name)
+result = @api.take_snapshot(camera)
+```
+
 # TODO
 
-* Control cameras (start/stop recordings, take snapshots)
+* Control cameras (start/stop recordings)
 * Download videos
 
 # Development
