@@ -58,7 +58,7 @@ module Arlo
         'cameraId': camera_id,
         'parentId': camera_id,
         'deviceId': camera_id,
-        'olsonTimeZone': 'Americal/New York'
+        'olsonTimeZone': camera['properties']['olsonTimeZone']
       }
 
       ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/takeSnapshot',
