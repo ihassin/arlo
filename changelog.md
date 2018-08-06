@@ -13,3 +13,10 @@
 * Devices and Profile are loaded when API object is created
 * Added arm/disarm API method
 * Added API to take a snapshot
+
+## 2018-08-06
+
+### Non-breaking
+
+* Added API to record video from a given camera
+

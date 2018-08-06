@@ -59,8 +59,19 @@ RSpec.describe 'Arlo Gem' do
         raise 'Missing ARLO_TEST_DEVICE environment variable' unless camera_name
 
         camera = @api.get_device_info(camera_name)
-        VCR.use_cassette 'camera' do
+        VCR.use_cassette 'snapshot' do
           result = @api.take_snapshot(camera)
+          expect(result['success']).to eq true
+        end
+      end
+
+      it 'records' do
+        camera_name = ENV['ARLO_TEST_DEVICE']
+        raise 'Missing ARLO_TEST_DEVICE environment variable' unless camera_name
+
+        camera = @api.get_device_info(camera_name)
+        VCR.use_cassette 'video' do
+          result = @api.record_video(camera, 10)
           expect(result['success']).to eq true
         end
       end
