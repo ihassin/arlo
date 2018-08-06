@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    arlo (0.0.4)
+    arlo (0.0.5)
 
 GEM
   remote: https://rubygems.org/
