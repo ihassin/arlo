@@ -12,11 +12,11 @@ module Arlo
       @devices['data'].select {|device| device['deviceName'] == device_name }[0]
     end
 
-    def arm_device(base_station, armed)
-      station_id = base_station['deviceId']
+    def arm_device(device, armed)
+      device_id = device['deviceId']
       payload = {
         'from': 'arlogem',
-        'to': station_id,
+        'to': device_id,
         'action': 'set',
         'resource': 'modes',
         'transId': SecureRandom.uuid,
@@ -26,10 +26,64 @@ module Arlo
         }
       }
 
-      ret_val = post("https://arlo.netgear.com/hmsweb/users/devices/notify/#{station_id}",
-                     payload,
-                     'xcloudId': base_station['xCloudId'])
+      ret_val = post("https://arlo.netgear.com/hmsweb/users/devices/notify/#{device_id}",
+                     payload, 'xcloudId': device['xCloudId'])
+
       JSON.parse(ret_val.body)
+    end
+
+    def take_snapshot(camera)
+      camera_id = camera['deviceId']
+
+      payload = {
+        'to': camera_id,
+        'from': 'ArloGem',
+        'resource': "cameras/#{camera_id}",
+        'action': 'set',
+        'publishResponse': true,
+        'transId': SecureRandom.uuid,
+        'properties': {
+            'activityState': 'startUserStream',
+            'cameraId': camera_id
+        }
+      }
+
+      ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/startStream',
+                     payload, 'xcloudId': camera['xCloudId'])
+
+      ret_val = JSON.parse(ret_val.body)
+      return ret_val unless ret_val['success']
+
+      payload = {
+        'cameraId': camera_id,
+        'parentId': camera_id,
+        'deviceId': camera_id,
+        'olsonTimeZone': 'Americal/New York'
+      }
+
+      ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/takeSnapshot',
+                     payload, 'xcloudId': camera['xCloudId'])
+
+      snapshot_ret_val = JSON.parse(ret_val.body)
+
+      payload = {
+          'to': camera_id,
+          'from': 'ArloGem',
+          'resource': "cameras/#{camera_id}",
+          'action': 'set',
+          'publishResponse': true,
+          'transId': SecureRandom.uuid,
+          'properties': {
+              'activityState': 'stopUserStream',
+              'cameraId': camera_id
+          }
+      }
+
+      ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/stopStream',
+                     payload, 'xcloudId': camera['xCloudId'])
+
+      JSON.parse(ret_val.body)
+      snapshot_ret_val
     end
   end
 end

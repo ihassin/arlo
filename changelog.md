@@ -12,3 +12,4 @@
 * API object is logged-in when created
 * Devices and Profile are loaded when API object is created
 * Added arm/disarm API method
+* Added API to take a snapshot
