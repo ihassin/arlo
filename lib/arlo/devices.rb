@@ -85,5 +85,56 @@ module Arlo
       JSON.parse(ret_val.body)
       snapshot_ret_val
     end
+
+    def record_video(camera, duration)
+      camera_id = camera['deviceId']
+      parent_id = camera['parentId']
+
+      payload = {
+          'to': parent_id,
+          'from': 'ArloGem',
+          'resource': "cameras/#{camera_id}",
+          'action': 'set',
+          'responseUrl': '',
+          'publishResponse': true,
+          'transId': SecureRandom.uuid,
+          'properties': {
+              'activityState': 'startUserStream',
+              'cameraId': camera_id
+          }
+      }
+
+      ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/startStream',
+                     payload, 'xcloudId': camera['xCloudId'])
+
+      ret_val = JSON.parse(ret_val.body)
+      payload = {
+          'xcloudId': camera['xCloudId'],
+          'parentId': camera['parentId'],
+          'deviceId': camera_id,
+          'olsonTimeZone': camera['properties']['olsonTimeZone']
+
+      }
+
+      ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/startRecord',
+                     payload, 'xcloudId': camera['xCloudId'])
+
+      JSON.parse(ret_val.body)
+
+      sleep(duration)
+
+      payload = {
+          'xcloudId': camera['xCloudId'],
+          'parentId': camera['parentId'],
+          'deviceId': camera_id,
+          'olsonTimeZone': camera['properties']['olsonTimeZone']
+
+      }
+
+      ret_val = post('https://arlo.netgear.com/hmsweb/users/devices/stopRecord',
+                     payload, 'xcloudId': camera['xCloudId'])
+
+      JSON.parse(ret_val.body)
+    end
   end
 end

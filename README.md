@@ -104,9 +104,19 @@ camera = @api.get_device_info(camera_name)
 result = @api.take_snapshot(camera)
 ```
 
+## record_video
+
+Call this to take a snapshot using a given camera.
+
+```
+api = Arlo::API.new
+camera = @api.get_device_info(camera_name)
+result = @api.record_video(camera, 10)
+```
+
 # TODO
 
-* Control cameras (start/stop recordings)
+* Record and take snapshots asynchronously
 * Download videos
 
 # Development
@@ -136,3 +146,7 @@ Thank you to [Roberto Gallea](http://www.robertogallea.com/blog/netgear-arlo-api
 # Other work
 
 Whats seems like a very comprehensive Python library by [jeffreydwalter](https://github.com/jeffreydwalter/arlo)
+
+# Changelog
+
+Check out the [changelog](https://github.com/ihassin/arlo/blob/master/changelog.md)
