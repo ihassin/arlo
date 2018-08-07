@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load
+
 require_relative 'arlo/network_helper'
 
 module Arlo
