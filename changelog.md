@@ -20,3 +20,10 @@
 
 * Added API to record video from a given camera
 
+## 2018-08-07
+
+### Non-breaking
+
+* Using the dotenv gem to store environment variables
+
+
