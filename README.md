@@ -22,9 +22,16 @@ Or install it yourself as:
 
 # Testing
 
-    ARLO_TEST_DEVICE=ddd ARLO_EMAIL=xxx ARLO_PASSWORD=yyy bundle exec rspec
+## Set up environment variables in a local ```.env``` file:
+    ARLO_EMAIL=your account email
+    ARLO_PASSWORD=your account password
+    ARLO_TEST_BASE_STATION=base-station name
+    ARLO_TEST_DEVICE=a camera's name
+    ARLO_SIREN_BASE_STATION=base-station with siren name
 
-ARLO_TEST_DEVICE being the name of the device you want to test with
+Run the tests
+
+    bundle exec rspec
 
 # Usage
 
@@ -112,6 +119,15 @@ Call this to take a snapshot using a given camera.
 api = Arlo::API.new
 camera = @api.get_device_info(camera_name)
 result = @api.record_video(camera, 10)
+```
+
+## set_siren_on
+
+Sound the siren for a determined duration
+
+```
+basestation = @api.get_device_info(basestation_name)
+result = @api.set_siren_on(basestation, 3)  # siren will sound for 3 seconds
 ```
 
 # TODO

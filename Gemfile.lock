@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    arlo (0.0.7)
+    arlo (0.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -37,6 +37,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   arlo!

@@ -50,7 +50,6 @@ RSpec.describe 'Arlo Gem' do
           expect(library['success']).to eq true
         end
       end
-
     end
 
     context 'video' do
@@ -77,6 +76,18 @@ RSpec.describe 'Arlo Gem' do
       end
     end
 
+    context 'base station' do
+      it 'sounds the siren' do
+        basestation_name = ENV['ARLO_SIREN_BASE_STATION']
+        raise 'Missing ARLO_SIREN_BASE_STATION environment variable' unless basestation_name
+
+        basestation = @api.get_device_info(basestation_name)
+        VCR.use_cassette 'siren' do
+          result = @api.set_siren_on(basestation, 3)
+          expect(result['success']).to eq true
+        end
+      end
+    end
   end
 
 end

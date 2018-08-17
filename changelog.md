@@ -26,4 +26,10 @@
 
 * Using the dotenv gem to store environment variables
 
+## 2018-08-27
+
+### Non-breaking
+
+* Added siren_on API
+
 
